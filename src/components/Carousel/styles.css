@@ -1,0 +1,10 @@
+/* Adicione estilos personalizados, se necessário */
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  color: #000; /* Cor dos botões */
+}
+
+.carousel-container {
+  /* Assegure que o contêiner do carrossel tenha espaço suficiente para as setas */
+  padding-bottom: 50px; /* Ajuste conforme necessário */
+}
