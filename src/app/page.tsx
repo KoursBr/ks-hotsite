@@ -7,6 +7,7 @@ import Results from "@/components/Results";
 import Sell from "@/components/Sell/Index";
 import StartFree from "@/components/StartFree";
 import Carousel from "@/components/Carousel";
+import Faq from "@/components/Faq";
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Sell />
       <Carousel />
       <StartFree />
+      <Faq />
     </ChakraProvider>
   )
 }

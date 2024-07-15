@@ -20,8 +20,6 @@ const cards = [
 ]
 
 export default function Sell() {
-  const flexDir = useBreakpointValue({ base: 'column', md: 'row' });
-
   return (
     <Box bg="#F4F8FF">
       <Box textAlign="center" fontWeight={600} py="4rem">
@@ -29,7 +27,7 @@ export default function Sell() {
         <Text color="gray.300" fontWeight={500}>Você define o caminho! Oferecemos duas opções para que o seu objetivo seja alcançado.</Text>
       </Box>
       <Flex
-        direction={flexDir}
+        flexDirection={{ base: 'column', md: 'row' }}
         justifyContent="center"
         alignItems="center"
         wrap="wrap"
@@ -61,8 +59,8 @@ export default function Sell() {
           )
         })}
       </Flex>
-      <Flex justifyContent="center" alignItems="center" h={{ base: "50vw", md: "10vw" }} position="relative">
-        <Button colorScheme="blue" my={6}>Teste grátis</Button>
+      <Flex justifyContent="center" alignItems="center" h={{ base: "50vh", md: "30vh" }} position="relative">
+        <Button bg="#017EF4" color={'white'} my={6}>Teste grátis</Button>
         <Image
             src="/bars.png"
             position="absolute"

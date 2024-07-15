@@ -15,14 +15,14 @@ import {
 } from '@chakra-ui/react'
 import NextImage from 'next/image';
 import { EmailIcon } from '@chakra-ui/icons';
-const heroImage = '/frame-hero.png';
 
 import Navbar from '../NavBar';
+
+const heroImage = '/frame-hero.png';
 
 export default function Hero() {
   const headingFontSize = useBreakpointValue({ base: '5xl', md: '6xl' });
   const textFontSize = useBreakpointValue({ base: 'lg', md: 'xl' });
-  const stackDirection = useBreakpointValue({ base: 'column', md: 'row' });
 
   return (
     <main>
@@ -30,10 +30,23 @@ export default function Hero() {
         height="100%"
         bg="radial-gradient(circle at bottom, #123352, #123352 10%, #0f406f 40%, #181818 60%, #181818)"
         position="relative"
+        _before={{
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)',
+          backgroundSize: '500px 500px',
+          zIndex: 1,
+        }}
       >
         <Flex
           direction="column"
           h="100%"
+          position="relative"
+          zIndex={2}
         >
           <Navbar />
           <Container maxW="7xl" p={4}>
@@ -45,11 +58,11 @@ export default function Hero() {
                 Crie, compartilhe e monetize seu conhecimento com cursos e e-books online.
               </Text>
               <Box p="1rem" w="full" maxW="xl" bg="#28394b" borderRadius="8">
-                <Stack direction={stackDirection} spacing={4} align="stretch">
+                <Stack direction={useBreakpointValue({ base: 'column', md: 'row' })} spacing={4} align="stretch">
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
-                      fontSize="xl"
+                      fontSize="lg"
                       height="100%"
                       display="flex"
                       alignItems="center"
@@ -59,17 +72,18 @@ export default function Hero() {
                     <Input
                       backgroundColor="white"
                       size='lg'
-                      _placeholder={{ color: "#8A8787" }}
+                      _placeholder={{ color: "#8A8787", fontSize: "0.9rem"}}
                       type="email"
                       placeholder="Insira o seu e-mail"
                       borderRadius="8"
+                      border="none"
                     />
                   </InputGroup>
                   <Button
                     backgroundColor="#017EF4"
                     size='lg'
                     color="white"
-                    fontSize="1rem"
+                    fontSize="0.9rem"
                     _hover={{ backgroundColor: "#0a60b0" }}
                     borderRadius="8"
                   >
@@ -95,6 +109,6 @@ export default function Hero() {
           </Flex>
         </Flex>
       </Box>
-    </main >
+    </main>
   )
 }
