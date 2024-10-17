@@ -116,7 +116,7 @@ export default function Hero() {
               <NextImage
                 src={heroImage}
                 alt="Descrição da imagem"
-                width={1241}
+                width={1000}
                 height={768}
                 objectFit="cover"
               />
