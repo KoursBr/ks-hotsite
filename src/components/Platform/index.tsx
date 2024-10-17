@@ -18,7 +18,7 @@ export default function Platform() {
       bg="primary"
       align="stretch"
       justify="space-between"
-      minH={{ base: "auto", md: "75vh" }}
+      // minH={{ base: "auto", md: "75vh" }}
     >
       <Box
         bg="primary"
@@ -41,7 +41,12 @@ export default function Platform() {
             h="250px"
           />
         )}
-        <Flex direction="column" justify="center" h="full">
+        <Flex
+          direction="column"
+          justify="center"
+          h="full"
+          py={{ base: 8, md: 0 }}
+        >
           <Heading size="2xl" mb={4}>
             Muito mais que uma plataforma
           </Heading>
@@ -56,9 +61,9 @@ export default function Platform() {
           </Text>
           <Button
             bg="dark.100"
-            width={'185px'}
-            height={'50px'}
-            fontSize={'15px'}
+            width={"185px"}
+            height={"50px"}
+            fontSize={"15px"}
             maxW="200px"
             fontWeight={500}
             color="white"
@@ -74,7 +79,7 @@ export default function Platform() {
           alt="Woman using a laptop"
           objectFit="cover"
           w="full"
-          // h={{ base: "auto", md: "500px" }}
+          h={{ base: "auto", md: "500px" }}
         />
       </Box>
     </Flex>
