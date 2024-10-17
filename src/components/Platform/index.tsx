@@ -1,12 +1,34 @@
-'use client'
-import { Box, Flex, Heading, Text, Button, Image, useBreakpointValue } from '@chakra-ui/react';
+"use client";
+import {
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Image,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 export default function Platform() {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Flex direction={isMobile ? 'column-reverse' : 'row'} bg="primary" align="stretch" justify="space-between">
-      <Box bg="primary" color="white" px={isMobile ? "4" : "20"} py={isMobile ? "4" : "20"} flex={1} h="full" position="relative">
+    <Flex
+      direction={isMobile ? "column-reverse" : "row"}
+      bg="primary"
+      align="stretch"
+      justify="space-between"
+      minH={{ base: "auto", md: "75vh" }}
+    >
+      <Box
+        bg="primary"
+        color="white"
+        px={isMobile ? "4" : "20"}
+        py={isMobile ? "4" : "20"}
+        flex={1}
+        h="full"
+        position="relative"
+      >
         {!isMobile && (
           <Image
             src="/dark-logo.png"
@@ -24,12 +46,26 @@ export default function Platform() {
             Muito mais que uma plataforma
           </Heading>
           <Text mb={4}>
-            Ao se juntar à nossa plataforma, você ganha acesso a um universo de possibilidades e vantagens exclusivas.
+            Ao se juntar à nossa plataforma, você ganha acesso a um universo de
+            possibilidades e vantagens exclusivas.
           </Text>
           <Text mb={8}>
-            Você pode criar cursos envolventes, alcançar um público mais amplo e expandir seus horizontes. Sua jornada é única, e estamos comprometidos em ajudá-lo a alcançar o sucesso que você merece.
+            Você pode criar cursos envolventes, alcançar um público mais amplo e
+            expandir seus horizontes. Sua jornada é única, e estamos
+            comprometidos em ajudá-lo a alcançar o sucesso que você merece.
           </Text>
-          <Button bg="dark.100" size="lg" maxW="200px" fontWeight={500} color="white" _hover={{ bg: "gray.500" }}>Quero fazer parte</Button>
+          <Button
+            bg="dark.100"
+            width={'185px'}
+            height={'50px'}
+            fontSize={'15px'}
+            maxW="200px"
+            fontWeight={500}
+            color="white"
+            _hover={{ bg: "gray.500" }}
+          >
+            Quero fazer parte
+          </Button>
         </Flex>
       </Box>
       <Box flex={1} h="full">
@@ -38,7 +74,7 @@ export default function Platform() {
           alt="Woman using a laptop"
           objectFit="cover"
           w="full"
-          h={{ base: 'auto', md: '500px' }}
+          // h={{ base: "auto", md: "500px" }}
         />
       </Box>
     </Flex>

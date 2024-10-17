@@ -16,7 +16,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { PiUserCircleFill } from "react-icons/pi";
 
-const Links = ['Porque a Kours?', 'Como funciona?', 'Feedback', 'Preços e planos', 'Perguntas frequentes'];
+const Links = ['Porque a Kours?', 'Como funciona?', 'Feedback', 'Perguntas frequentes'];
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,7 +59,7 @@ const Navbar = () => {
             </HStack>
           </HStack>
           <Flex alignItems={'center'} display={{ base: 'none', md: 'flex' }} borderLeft="1px solid #868686">
-            <Button
+            {/* <Button
               leftIcon={<Icon as={PiUserCircleFill} boxSize={6} />}
               variant="solid"
               color="white"
@@ -70,7 +70,7 @@ const Navbar = () => {
               px={4}
             >
               Login
-            </Button>
+            </Button> */}
           </Flex>
         </Flex>
 

@@ -17,8 +17,8 @@ function Home() {
       <Platform />
       <Results />
       <Sell />
-      <Carousel />
-      <StartFree />
+      {/* <Carousel /> */}
+      {/* <StartFree /> */}
       <Faq />
     </ChakraProvider>
   )
