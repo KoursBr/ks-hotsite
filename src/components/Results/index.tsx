@@ -13,6 +13,7 @@ import {
 import { TfiStatsUp } from "react-icons/tfi";
 import { MdOutlineTextFields } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
+import { forwardRef } from "react";
 
 const resultsFirst = "/results-first.svg";
 const resultsSecond = "/results-second.svg";
@@ -39,14 +40,14 @@ const results = [
   },
 ];
 
-export default function Results() {
+const Results = forwardRef((props, forwardRef: any) => {
   return (
-    <Box bg="dark.100" overflowX="hidden" py={8} px={8}>
+    <Box bg="dark.100" overflowX="hidden" py={8} px={8} ref={forwardRef}>
       <Box
         textAlign={{ base: "left", md: "center" }}
         fontWeight={600}
         py="2rem"
-        mt={{ base: 8, md: 12}}
+        mt={{ base: 8, md: 12 }}
       >
         <Text color="primary" fontSize={{ base: "md", md: "sm" }}>
           Como funciona?
@@ -89,7 +90,7 @@ export default function Results() {
                 justifyContent="center"
                 spacing={2}
                 mt="1rem"
-                px={{base: '0', md: "2rem"}}
+                px={{ base: "0", md: "2rem" }}
                 zIndex="1"
               >
                 <Icon
@@ -102,10 +103,12 @@ export default function Results() {
                   borderRadius="5px"
                   border="1px solid #4d4d4d"
                 />
-                <Heading as="h2" size="lg" mb={2} color="white" maxW={'480px'}>
+                <Heading as="h2" size="lg" mb={2} color="white" maxW={"480px"}>
                   {result.title}
                 </Heading>
-                <Text color="white" maxW={'480px'}>{result.text}</Text>
+                <Text color="white" maxW={"480px"}>
+                  {result.text}
+                </Text>
               </Stack>
               <Box ml={{ base: 0, md: 5 }} zIndex="1">
                 <Image
@@ -124,4 +127,6 @@ export default function Results() {
       </Container>
     </Box>
   );
-}
+});
+
+export default Results;

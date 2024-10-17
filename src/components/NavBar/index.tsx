@@ -25,7 +25,7 @@ const Links = [
   "Perguntas frequentes",
 ];
 
-const Navbar = () => {
+const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -50,9 +50,9 @@ const Navbar = () => {
             size={"md"}
             icon={
               isOpen ? (
-                <CloseIcon color={"white"} fontSize={'12px'} />
+                <CloseIcon color={"white"} fontSize={"12px"} />
               ) : (
-                <HamburgerIcon color={"white"} fontSize={'20px'}/>
+                <HamburgerIcon color={"white"} fontSize={"20px"} />
               )
             }
             aria-label={"Open Menu"}
@@ -82,6 +82,7 @@ const Navbar = () => {
                     bg: "gray.500",
                     fontSize: "sm",
                   }}
+                  onClick={() => onItemClick(link)}
                 >
                   {link}
                 </Link>

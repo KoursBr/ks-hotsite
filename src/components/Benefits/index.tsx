@@ -9,6 +9,7 @@ import {
   Icon,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import { forwardRef } from "react";
 import { BiSolidWidget } from "react-icons/bi";
 import { MdUpdate, MdDevices } from "react-icons/md";
 
@@ -30,11 +31,11 @@ const benefits = [
   },
 ];
 
-export default function Features() {
+const Features = forwardRef((props, forwardRef: any) => {
   const headingFontSize = useBreakpointValue({ base: "32px", md: "54px" });
 
   return (
-    <Box bg="#F4F8FF">
+    <Box bg="#F4F8FF" ref={forwardRef}>
       <Box py={8} px={8} maxW="7xl" mx="auto">
         <Box
           textAlign={{ base: "left", md: "center" }}
@@ -54,7 +55,7 @@ export default function Features() {
         <SimpleGrid
           columns={{ base: 1, md: 3 }}
           spacing={10}
-          p={{ base: '10px' ,md: "2rem" }}
+          p={{ base: "10px", md: "2rem" }}
           border="1px solid #e6e6e6"
           borderRadius="10px"
         >
@@ -84,4 +85,6 @@ export default function Features() {
       </Box>
     </Box>
   );
-}
+});
+
+export default Features;

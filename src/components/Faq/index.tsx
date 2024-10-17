@@ -18,151 +18,161 @@ import {
 import KoursLogo from "../../../public/white-logo.svg";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdOutgoingMail } from "react-icons/md";
+import { forwardRef } from "react";
 
-const FaqSection = () => {
-  const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
+const FaqSection = forwardRef(
+  ({ onOpenLeadModal }: { onOpenLeadModal: () => void }, forwardRef: any) => {
+    const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
 
-  return (
-    <Box
-      as="section"
-      bg="rgb(24,24,24)"
-      bgGradient="linear(to top, rgba(24,24,24,0) 0%, rgba(0,0,0,1) 100%)"
-      minH={'100vh'}
-      height={{ base: "auto", md: "auto" }}
-      position="relative"
-      pt={{base: 8, md: 24}}
-    >
-      <Hide below="md">
-        <Box
-          position={"absolute"}
-          top="0"
-          left="0"
-          right="0"
-          bottom="0"
-          bgImage="url('/faq-background-image.svg')"
-          bgPosition="bottom"
-          bgRepeat="repeat-y"
-          bgSize="100vw 300px"
-          height={"full"}
-        />
-      </Hide>
-
-      <Flex
-        direction="column"
-        justify={"space-between"}
-        color="white"
-        gap={12}
-        py={10}
-        px={{ base: 2, md: 8 }}
-        maxW="7xl"
-        mx="auto"
-        height={"full"}
+    return (
+      <Box
+        as="section"
+        bg="rgb(24,24,24)"
+        bgGradient="linear(to top, rgba(24,24,24,0) 0%, rgba(0,0,0,1) 100%)"
+        minH={"100vh"}
+        height={{ base: "auto", md: "auto" }}
+        position="relative"
+        pt={{ base: 8, md: 24 }}
+        ref={forwardRef}
       >
-        <Flex
-          direction={{ base: "column", md: "row" }}
-          justify="space-between"
-          p={{ base: 4, md: 10 }}
-          zIndex="2"
-          position="relative"
-        >
-          {/* Left Section - FAQ Heading and Button */}
-          <Box maxW={{ base: "100%", md: "40%" }} zIndex="2">
-            <Text mb={2} color={"#62B0F9"} fontWeight={600}>
-              Perguntas frequentes
-            </Text>
-            <Heading as="h2" size="2xl" mb={4}>
-              Ficou com alguma dúvida?
-            </Heading>
-            <Text mb={6}>
-              Se mesmo depois de ler as perguntas frequentes ainda tiver dúvidas
-              sobre a plataforma ou se precisar de assistência, entre em contato
-              conosco.
-            </Text>
-            <Button
-              bg="#017EF4"
-              size={buttonSize}
-              zIndex="2"
-              color={"white"}
-              _hover={{ bg: "rgba(1, 126, 244, 0.6)" }}
-            >
-              <MdOutgoingMail
-                style={{ marginRight: "5px" }}
-                fontSize={"20px"}
-              />
-              Fale conosco
-            </Button>
-          </Box>
-
-          {/* Right Section - FAQ Accordion */}
+        <Hide below="md">
           <Box
-            maxW={{ base: "100%", md: "45%" }}
-            mt={{ base: 8, md: 0 }}
-            bg={"rgba(24, 24, 24, 0.5)"}
-            zIndex="2"
-          >
-            <Accordion allowMultiple bg={"rgba(24, 24, 24, 0.5)"}>
-              {faqData.map((faq, index) => (
-                <AccordionItem key={index} border="none">
-                  <AccordionButton
-                    _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
-                    borderRadius="md"
-                    px={4}
-                    py={4}
-                    bg="rgba(255, 255, 255, 0.1)"
-                    color="white"
-                    mb={2}
-                  >
-                    <Box flex="1" textAlign="left">
-                      {faq.question}
-                    </Box>
-                    <FaCirclePlus
-                      color="#696969"
-                      style={{ marginLeft: "6px" }}
-                    />
-                  </AccordionButton>
-                  <AccordionPanel pb={4} color="gray.300">
-                    {faq.answer}
-                  </AccordionPanel>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </Box>
-        </Flex>
+            position={"absolute"}
+            top="0"
+            left="0"
+            right="0"
+            bottom="0"
+            bgImage="url('/faq-background-image.svg')"
+            bgPosition="bottom"
+            bgRepeat="repeat-y"
+            bgSize="100vw 300px"
+            height={"full"}
+          />
+        </Hide>
 
-        {/* Footer */}
         <Flex
-          mx={{ base: 0, md: 12 }}
-          align={"center"}
+          direction="column"
           justify={"space-between"}
-          flexDir={{ base: "column-reverse", md: "row" }}
+          color="white"
+          gap={12}
+          py={10}
+          px={{ base: 2, md: 8 }}
+          maxW="7xl"
+          mx="auto"
+          height={"full"}
         >
-          <Box position={"relative"}>
-            <Image src={KoursLogo} alt="Kours Logo" width={100} height={100} />
-          </Box>
-
           <Flex
-            justify={{ base: "space-between", md: "center" }}
-            align="center"
-            py={4}
-            px={{ base: 2, md: 4 }}
+            direction={{ base: "column", md: "row" }}
+            justify="space-between"
+            p={{ base: 4, md: 10 }}
             zIndex="2"
-            mt={{ base: 4, md: 8 }}
-            mb={{ base: 4, md: 0 }}
-            gap={4}
-            position={"relative"}
+            position="relative"
           >
-            <Text fontSize="sm" color="white">
-              Políticas de cookies
-            </Text>
-            <Text fontSize="sm" color="white">
-              Políticas de privacidade
-            </Text>
+            {/* Left Section - FAQ Heading and Button */}
+            <Box maxW={{ base: "100%", md: "40%" }} zIndex="2">
+              <Text mb={2} color={"#62B0F9"} fontWeight={600}>
+                Perguntas frequentes
+              </Text>
+              <Heading as="h2" size="2xl" mb={4}>
+                Ficou com alguma dúvida?
+              </Heading>
+              <Text mb={6}>
+                Se mesmo depois de ler as perguntas frequentes ainda tiver
+                dúvidas sobre a plataforma ou se precisar de assistência, entre
+                em contato conosco.
+              </Text>
+              <Button
+                bg="#017EF4"
+                size={buttonSize}
+                zIndex="2"
+                color={"white"}
+                _hover={{ bg: "rgba(1, 126, 244, 0.6)" }}
+                onClick={onOpenLeadModal}
+              >
+                <MdOutgoingMail
+                  style={{ marginRight: "5px" }}
+                  fontSize={"20px"}
+                />
+                Fale conosco
+              </Button>
+            </Box>
+
+            {/* Right Section - FAQ Accordion */}
+            <Box
+              maxW={{ base: "100%", md: "45%" }}
+              mt={{ base: 8, md: 0 }}
+              bg={"rgba(24, 24, 24, 0.5)"}
+              zIndex="2"
+            >
+              <Accordion allowMultiple bg={"rgba(24, 24, 24, 0.5)"}>
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} border="none">
+                    <AccordionButton
+                      _hover={{ bg: "rgba(255, 255, 255, 0.2)" }}
+                      borderRadius="md"
+                      px={4}
+                      py={4}
+                      bg="rgba(255, 255, 255, 0.1)"
+                      color="white"
+                      mb={2}
+                    >
+                      <Box flex="1" textAlign="left">
+                        {faq.question}
+                      </Box>
+                      <FaCirclePlus
+                        color="#696969"
+                        style={{ marginLeft: "6px" }}
+                      />
+                    </AccordionButton>
+                    <AccordionPanel pb={4} color="gray.300">
+                      {faq.answer}
+                    </AccordionPanel>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Box>
+          </Flex>
+
+          {/* Footer */}
+          <Flex
+            mx={{ base: 0, md: 12 }}
+            align={"center"}
+            justify={"space-between"}
+            flexDir={{ base: "column-reverse", md: "row" }}
+          >
+            <Box position={"relative"}>
+              <Image
+                src={KoursLogo}
+                alt="Kours Logo"
+                width={100}
+                height={100}
+              />
+            </Box>
+
+            <Flex
+              justify={{ base: "space-between", md: "center" }}
+              align="center"
+              py={4}
+              px={{ base: 2, md: 4 }}
+              zIndex="2"
+              mt={{ base: 4, md: 8 }}
+              mb={{ base: 4, md: 0 }}
+              gap={4}
+              position={"relative"}
+            >
+              <Text fontSize="sm" color="white">
+                Políticas de cookies
+              </Text>
+              <Text fontSize="sm" color="white">
+                Políticas de privacidade
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
-      </Flex>
-    </Box>
-  );
-};
+      </Box>
+    );
+  }
+);
 
 const faqData = [
   {

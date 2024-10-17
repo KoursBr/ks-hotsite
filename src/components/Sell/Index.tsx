@@ -30,7 +30,11 @@ const cards = [
   },
 ];
 
-export default function Sell() {
+export default function Sell({
+  onOpenLeadModal,
+}: {
+  onOpenLeadModal: () => void;
+}) {
   return (
     <Box bg="#F4F8FF" py={8} px={8} position={"relative"}>
       <Box
@@ -98,7 +102,14 @@ export default function Sell() {
         alignItems={{ base: "left", md: "center" }}
         position="relative"
       >
-        <Button bg="#017EF4" color={"white"} mb={6} mt={8} width={"185px"}>
+        <Button
+          bg="#017EF4"
+          onClick={onOpenLeadModal}
+          color={"white"}
+          mb={6}
+          mt={8}
+          width={"185px"}
+        >
           Teste grátis
         </Button>
         {/* <Image

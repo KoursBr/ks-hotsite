@@ -14,14 +14,23 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import NextImage from "next/image";
-import { EmailIcon } from "@chakra-ui/icons";
 
 import Navbar from "../NavBar";
 import { MdEmail } from "react-icons/md";
+import { useState } from "react";
 
 const heroImage = "/frame-hero.png";
 
-export default function Hero() {
+export default function Hero({
+  setEmail,
+  onOpenLeadModal,
+  onItemClick,
+}: {
+  setEmail: (email: string) => void;
+  onOpenLeadModal: () => void;
+  onItemClick: (item: string) => void;
+}) {
+  const [emailValue, setEmailValue] = useState("");
   const headingFontSize = useBreakpointValue({ base: "46px", md: "72px" });
   const textFontSize = useBreakpointValue({ base: "lg", md: "xl" });
 
@@ -48,7 +57,7 @@ export default function Hero() {
         }}
       >
         <Flex direction="column" h="100%" position="relative" zIndex={2}>
-          <Navbar />
+          <Navbar onItemClick={onItemClick} />
           <Container maxW="7xl" p={4}>
             <Stack
               direction="column"
@@ -95,6 +104,11 @@ export default function Hero() {
                       placeholder="Insira o seu e-mail"
                       borderRadius="8"
                       border="none"
+                      value={emailValue}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setEmailValue(e.target.value);
+                      }}
                     />
                   </InputGroup>
                   <Button
@@ -104,6 +118,7 @@ export default function Hero() {
                     fontSize="0.9rem"
                     _hover={{ backgroundColor: "#0a60b0" }}
                     borderRadius="8"
+                    onClick={onOpenLeadModal}
                   >
                     Comece grátis
                   </Button>

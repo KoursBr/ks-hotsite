@@ -9,7 +9,11 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-export default function Platform() {
+export default function Platform({
+  onOpenLeadModal,
+}: {
+  onOpenLeadModal: () => void;
+}) {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
@@ -68,6 +72,7 @@ export default function Platform() {
             fontWeight={500}
             color="white"
             _hover={{ bg: "gray.500" }}
+            onClick={onOpenLeadModal}
           >
             Quero fazer parte
           </Button>
