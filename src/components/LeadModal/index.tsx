@@ -118,7 +118,7 @@ const RegisterModal = React.forwardRef(
                 Tenha acesso antecipado!
               </Text>
               <Text mt={2} color="gray.600">
-                Se inscreva e seja um dos primeiros a experimentar a plataforma.
+                Inscreva-se e seja um dos primeiros a experimentar a plataforma.
               </Text>
             </Box>
 
