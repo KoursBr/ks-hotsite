@@ -13,6 +13,7 @@ import Faq from "@/components/Faq";
 import RegisterModal from "@/components/LeadModal";
 import { useRef, useState } from "react";
 import Navbar from "@/components/NavBar";
+import DemoVideo from "@/components/DemoVideo";
 
 function Home() {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -47,8 +48,9 @@ function Home() {
         setEmail={setHeroInputEmail}
         onItemClick={scrollTo}
       />
-      <Features ref={featuresRef} />
+      <DemoVideo />
       <Platform onOpenLeadModal={onOpen} />
+      <Features ref={featuresRef} />
       <Results ref={resultsRef} />
       <Sell onOpenLeadModal={onOpen} />
       {/* <Carousel /> */}
