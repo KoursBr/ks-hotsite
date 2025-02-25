@@ -107,7 +107,7 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
               _hover={{ bg: "gray.500" }}
               bg="transparent"
               px={4}
-              disabled
+              onClick={() => window.open("https://admin.kours.com.br", "_blank")}
             >
               Login
             </Button>
