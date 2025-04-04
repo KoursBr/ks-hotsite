@@ -10,19 +10,17 @@ import {
   ModalBody,
   ModalCloseButton,
   useToast,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import {
   Box,
   Button,
   Flex,
   FormLabel,
-  HStack,
-  Input,
-  Radio,
-  RadioGroup,
   Text,
   VStack,
   Image,
+  Input,
 } from "@chakra-ui/react";
 
 interface RegisterModalProps {
@@ -35,40 +33,66 @@ const RegisterModal = React.forwardRef(
   (props: RegisterModalProps, forwardRef) => {
     const { showModal, onClose, prevEmail } = props;
 
-    const [contentStatus, setContentStatus] = useState("yes");
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [instagram, setInstagram] = useState("");
-    const [email, setEmail] = useState(prevEmail);
     const [name, setName] = useState("");
+    const [email, setEmail] = useState(prevEmail || "");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
     const toast = useToast();
 
+    const validate = () => {
+      const newErrors: typeof errors = {};
+      if (!name.trim()) newErrors.name = "Nome é obrigatório.";
+      if (!email.trim()) {
+        newErrors.email = "Email é obrigatório.";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        newErrors.email = "Email inválido.";
+      }
+      setErrors(newErrors);
+      return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = async () => {
-      const dto = {
-        name,
-        instagram,
-        contentStatus,
-        email,
-        access_key: "b4cff98c-3a06-4610-8cdd-685959227787",
-      };
+      if (!validate()) return;
+
+      const dto = { name, email };
 
       setIsSubmitting(true);
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(dto),
-      });
 
-      if (response.status === 200) {
-        onClose();
+      try {
+        const response = await fetch(
+          "https://run.relay.app/api/v1/playbook/cm92uq7yj0bmp0plyau1e3s96/trigger/og-s1U18mfR7P9poiFsXsw",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(dto),
+          }
+        );
+
+        if (response.ok) {
+          const url = `https://admin.kours.com.br/register?nome=${encodeURIComponent(
+            name
+          )}&email=${encodeURIComponent(email)}`;
+
+          window.open(url, "_blank");
+
+          onClose();
+        } else {
+          toast({
+            status: "error",
+            title: "Erro ao enviar dados.",
+            description: "Tente novamente em alguns instantes.",
+            position: "top-right",
+          });
+        }
+      } catch (error) {
         toast({
-          status: "success",
-          title: "Inscrição realizada com sucesso!",
-          description:
-            "Você será notificado assim que o acesso antecipado estiver disponível.",
+          status: "error",
+          title: "Erro ao enviar dados.",
+          description: "Tente novamente em alguns instantes.",
           position: "top-right",
         });
       }
@@ -84,7 +108,6 @@ const RegisterModal = React.forwardRef(
       return () => {
         setName("");
         setEmail("");
-        setInstagram("");
       };
     }, []);
 
@@ -101,13 +124,8 @@ const RegisterModal = React.forwardRef(
               <Image
                 src="/Black logo - no background.svg"
                 alt="Kours logo icon"
-                w={"90px"}
+                w="90px"
               />
-              <Box bg="green.100" px={2} py={1} rounded="full">
-                <Text fontSize="xs" color="green.700">
-                  Em breve!
-                </Text>
-              </Box>
             </Flex>
           </ModalHeader>
           <ModalCloseButton />
@@ -115,71 +133,52 @@ const RegisterModal = React.forwardRef(
           <ModalBody pb={6}>
             <Box mt={4}>
               <Text fontSize="2xl" fontWeight="bold">
-                Tenha acesso antecipado!
+                Faça parte da Kours
               </Text>
               <Text mt={2} color="gray.600">
-                Inscreva-se e seja um dos primeiros a experimentar a plataforma.
+                Inscreva-se para experimentar a plataforma.
               </Text>
             </Box>
 
             <VStack spacing={4} mt={6}>
-              <HStack spacing={4} w="full">
-                <FormControl>
-                  <FormLabel>Nome</FormLabel>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="João Pedro"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </FormControl>
+              <FormControl isInvalid={!!errors.name}>
+                <FormLabel>Nome</FormLabel>
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="João Pedro"
+                  _placeholder={{ color: "gray.400" }}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <FormErrorMessage>{errors.name}</FormErrorMessage>
+              </FormControl>
 
-                <FormControl>
-                  <FormLabel>Instagram</FormLabel>
-                  <Input
-                    id="instagram"
-                    name="instagram"
-                    placeholder="@joaopedro"
-                    value={instagram}
-                    onChange={(e) => setInstagram(e.target.value)}
-                  />
-                </FormControl>
-              </HStack>
-
-              <FormControl>
+              <FormControl isInvalid={!!errors.email}>
                 <FormLabel>Email</FormLabel>
                 <Input
                   id="email"
                   type="email"
                   name="email"
                   placeholder="joao.pedro@email.com"
+                  _placeholder={{ color: "gray.400" }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Já possui seu infoproduto?</FormLabel>
-                <RadioGroup onChange={setContentStatus} value={contentStatus}>
-                  <VStack alignItems="start">
-                    <Radio value="yes">Sim</Radio>
-                    <Radio value="no">Não</Radio>
-                    <Radio value="producing">Estou produzindo</Radio>
-                  </VStack>
-                </RadioGroup>
+                <FormErrorMessage>{errors.email}</FormErrorMessage>
               </FormControl>
             </VStack>
 
             <Button
               mt={6}
               w="full"
-              color={"white"}
-              bg={"#017EF4"}
+              color="white"
+              bg="#017EF4"
               isLoading={isSubmitting}
               onClick={handleSubmit}
+              isDisabled={isSubmitting}
             >
-              Me inscrever
+              Começar agora
             </Button>
           </ModalBody>
         </ModalContent>
@@ -187,39 +186,5 @@ const RegisterModal = React.forwardRef(
     );
   }
 );
-
-interface InputFieldProps {
-  id: string;
-  label: string;
-  type: string;
-  placeholder?: string;
-  addon?: string;
-  value: any;
-  setValue: (value: string) => void;
-}
-
-const InputField = ({
-  label,
-  id,
-  type,
-  placeholder,
-  addon,
-  value,
-  setValue,
-}: InputFieldProps) => {
-  return (
-    <Box w="full">
-      <FormLabel htmlFor={id}>{label}</FormLabel>
-      <Input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        pl={addon ? 8 : 3}
-      />
-    </Box>
-  );
-};
 
 export default RegisterModal;
