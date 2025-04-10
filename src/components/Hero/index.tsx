@@ -57,7 +57,6 @@ export default function Hero({
         }}
       >
         <Flex direction="column" h="100%" position="relative" zIndex={2}>
-          <Navbar onItemClick={onItemClick} />
           <Container maxW="7xl" p={4}>
             <Stack
               direction="column"

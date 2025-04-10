@@ -22,12 +22,13 @@ const Links = [
   "Porque a Kours?",
   "Como funciona?",
   "Feedback",
+  "Preços e planos",
   "Perguntas frequentes",
 ];
 
 const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
