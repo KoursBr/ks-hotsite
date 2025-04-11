@@ -1,34 +1,39 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
+import { useSearchParams } from "next/navigation";
 import { Box, ChakraProvider, useDisclosure } from "@chakra-ui/react";
+
 import koursTheme from "../styles/theme";
+
+import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
-import Features from "@/components/Benefits";
-import Platform from "@/components/Platform";
+import Plans from "@/components/Plans";
+import Navbar from "@/components/NavBar";
 import Results from "@/components/Results";
 import Sell from "@/components/Sell/Index";
-import StartFree from "@/components/StartFree";
+import Features from "@/components/Benefits";
+import Platform from "@/components/Platform";
 import Carousel from "@/components/Carousel";
-import Faq from "@/components/Faq";
-import RegisterModal from "@/components/LeadModal";
-import Plans from "@/components/Plans";
-import { useEffect, useRef, useState } from "react";
 import FaqPlans from "@/components/FaqPlans";
+import StartFree from "@/components/StartFree";
+import DemoVideo from "@/components/DemoVideo";
+import RegisterModal from "@/components/LeadModal";
 import HelpSection from "@/components/HelpSection";
-import Navbar from "@/components/NavBar";
-import { useSearchParams } from "next/navigation";
 
 function Home() {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const searchParams = useSearchParams();
+
   const [showPlans, setShowPlans] = useState(false);
   const [heroInputEmail, setHeroInputEmail] = useState("");
+  const [pendingScrollTo, setPendingScrollTo] = useState<string | null>(null);
+
   const featuresRef = useRef<HTMLDivElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const plansRef = useRef<HTMLDivElement>(null);
-  const [pendingScrollTo, setPendingScrollTo] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-
 
   const scrollTo = (item: string) => {
     if (item === "Preços e planos") {
@@ -88,7 +93,7 @@ function Home() {
     const sectionParam = searchParams.get("section");
     if (sectionParam === "plans") {
       setShowPlans(true);
-      setPendingScrollTo("Preços e planos"); // Scroll suave
+      setPendingScrollTo("Preços e planos");
     }
   }, [searchParams]);
 
@@ -104,6 +109,9 @@ function Home() {
           setEmail={setHeroInputEmail}
           onItemClick={scrollTo}
         />
+
+        <DemoVideo />
+
         <Platform onOpenLeadModal={onOpen} />
         <Features ref={featuresRef} />
         <Results ref={resultsRef} />
