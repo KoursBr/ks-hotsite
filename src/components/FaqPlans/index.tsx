@@ -10,12 +10,11 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { FaCirclePlus } from "react-icons/fa6";
 
 import KoursLogo from "../../../public/svg/kours-white-logo.svg";
-
 
 const FaqPlans = () => {
   return (
@@ -30,7 +29,6 @@ const FaqPlans = () => {
       overflow="hidden"
       zIndex="1"
     >
-
       <Hide below="md">
         <Box
           position="absolute"
@@ -46,7 +44,6 @@ const FaqPlans = () => {
           zIndex="0"
         />
       </Hide>
-
 
       <Flex
         direction="column"
@@ -80,7 +77,7 @@ const FaqPlans = () => {
                   <FaCirclePlus color="#696969" style={{ marginLeft: "6px" }} />
                 </AccordionButton>
                 <AccordionPanel pb={4} color="gray.300">
-                  {/* Deixe o painel vazio se não quiser respostas por agora */}
+                  {faq.answer}
                 </AccordionPanel>
               </AccordionItem>
             ))}
@@ -130,20 +127,30 @@ const FaqPlans = () => {
 
 const faqData = [
   {
-    question: "Posso testar um plano gratuitamente antes de escolher um plano?",
+    question: "Posso testar a plataforma antes de contratar um plano?",
+    answer:
+      "Sim! Você pode criar sua conta gratuitamente e só escolher um plano quando estiver pronto para vender.",
   },
   {
-    question: "Posso alterar meu plano ou cancelá-lo a qualquer momento?",
+    question: "Qual a diferença entre os planos?",
+    answer:
+      "Os planos variam de acordo com a taxa de transação, funcionalidades avançadas e suporte prioritário. Escolha o que mais faz sentido para o seu momento.",
   },
   {
-    question: "Quais são as opções de pagamento disponíveis?",
+    question: "Posso migrar de plano depois?",
+    answer:
+      "Com certeza. Você pode mudar de plano a qualquer momento — seja para escalar ou para adaptar seu negócio.",
   },
   {
-    question: "Qual é a diferença entre a versão gratuita e os planos pagos?",
+    question: "O pagamento é seguro?",
+    answer:
+      "Sim. Usamos processadores confiáveis e certificados, com criptografia de ponta a ponta. Seu pagamento e o dos seus alunos estão protegidos.",
   },
   {
     question:
       "Existe suporte disponível para ajudar na configuração do meu plano?",
+    answer:
+      "Sim. Nossa equipe está pronta para te ajudar via chat, e-mail e tutoriais. E nos planos avançados, o suporte é prioritário.",
   },
 ];
 
