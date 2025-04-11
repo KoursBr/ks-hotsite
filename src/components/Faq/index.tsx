@@ -12,20 +12,16 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
 } from "@chakra-ui/react";
 
 import KoursLogo from "../../../public/svg/kours-white-logo.svg";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdOutgoingMail } from "react-icons/md";
 import { forwardRef } from "react";
-import { useRouter } from "next/navigation";
 
 const FaqSection = forwardRef(
   ({ onTalkToUseClick }: { onTalkToUseClick: () => void }, forwardRef: any) => {
     const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
-
-    const router = useRouter();
 
     return (
       <Box

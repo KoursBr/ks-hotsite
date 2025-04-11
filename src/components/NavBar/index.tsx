@@ -20,8 +20,8 @@ import { PiUserCircleFill } from "react-icons/pi";
 
 const Links = [
   "Porque a Kours?",
+  "Apresentação",
   "Como funciona?",
-  "Feedback",
   "Preços e planos",
   "Perguntas frequentes",
 ];
@@ -134,6 +134,10 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
                   _hover={{
                     textDecoration: "none",
                     bg: "teal.700",
+                  }}
+                  onClick={() => {
+                    onClose();
+                    onItemClick(link);
                   }}
                 >
                   {link}

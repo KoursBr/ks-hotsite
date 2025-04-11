@@ -45,6 +45,7 @@ function Home() {
   const resultsRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const plansRef = useRef<HTMLDivElement>(null);
+  const demoRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (item: string) => {
     if (item === "Preços e planos") {
@@ -66,6 +67,13 @@ function Home() {
       });
     }
 
+    if (item === "Apresentação") {
+      demoRef?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
     if (item === "Como funciona?") {
       resultsRef?.current?.scrollIntoView({
         behavior: "smooth",
@@ -73,7 +81,7 @@ function Home() {
       });
     }
 
-    if (item === "Feedback" || item === "Perguntas frequentes") {
+    if (item === "Perguntas frequentes") {
       faqRef?.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -121,7 +129,7 @@ function Home() {
           onItemClick={scrollTo}
         />
 
-        <DemoVideo />
+        <DemoVideo ref={demoRef} />
 
         <Platform onOpenLeadModal={onOpenLeadModal} />
         <Features ref={featuresRef} />

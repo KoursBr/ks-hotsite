@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import {
   Box,
   Button,
@@ -12,13 +12,13 @@ import {
 } from "@chakra-ui/react";
 import { FaPlay } from "react-icons/fa";
 
-const DemoVideo = () => {
+const DemoVideo = forwardRef((props, forwardRef: any) => {
   const [playVideo, setPlayVideo] = useState(false);
 
   const headingFontSize = useBreakpointValue({ base: "32px", md: "54px" });
 
   return (
-    <Container maxW="4xl" p={4} centerContent>
+    <Container maxW="4xl" p={4} centerContent ref={forwardRef}>
       <Box
         textAlign={{ base: "left", md: "center" }}
         fontWeight={600}
@@ -82,6 +82,6 @@ const DemoVideo = () => {
       </Box>
     </Container>
   );
-};
+});
 
 export default DemoVideo;
