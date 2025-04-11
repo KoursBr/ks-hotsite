@@ -38,7 +38,10 @@ export default function Hero({
     <main>
       <Box
         height="100%"
-        bg="radial-gradient(circle at bottom, #123352, #123352 10%, #0f406f 40%, #181818 60%, #181818)"
+        bg={{
+          base: "#181818",
+          md: "radial-gradient(circle at bottom, #123352, #123352 10%, #0f406f 40%, #181818 60%, #181818)",
+        }}
         position="relative"
         _before={{
           base: {},

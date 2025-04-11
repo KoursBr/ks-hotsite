@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Kours",
     images: [
       {
-        url: "https://kours.com.br/og-image.webp",
+        url: "https://kours.com.br/webp/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Kours - Plataforma para cursos online white-label",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Kours - Plataforma White-label para Cursos Online",
     description:
       "A Kours é uma plataforma white-label para criadores de conteúdo, escolas e empresas venderem cursos online e produtos digitais com autonomia, personalização e escalabilidade.",
-    images: ["https://kours.com.br/og-image.webp"],
+    images: ["https://kours.com.br/webp/og-image.webp"],
   },
 };
 
