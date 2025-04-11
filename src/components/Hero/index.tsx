@@ -19,6 +19,7 @@ import { MdEmail } from "react-icons/md";
 import { useState } from "react";
 
 const heroImage = "/webp/frame-hero.webp";
+const heroImageBlur = "/webp/frame-hero-blur.webp";
 
 export default function Hero({
   setEmail,
@@ -128,11 +129,13 @@ export default function Hero({
             <Box overflow="hidden" lineHeight="0" px={1}>
               <NextImage
                 src={heroImage}
-                alt="Descrição da imagem"
+                alt="Demonstração da plataforma Kours em uso"
                 width={1000}
                 height={768}
-                objectFit="cover"
-                loading="eager"
+                priority
+                placeholder="blur"
+                blurDataURL={heroImageBlur}
+                style={{ objectFit: "cover" }}
               />
             </Box>
           </Flex>

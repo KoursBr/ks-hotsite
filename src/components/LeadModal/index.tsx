@@ -127,6 +127,7 @@ const RegisterModal = React.forwardRef(
                 w="90px"
                 h="100%"
                 loading="lazy"
+                title="Kours logo icon"
               />
             </Flex>
           </ModalHeader>

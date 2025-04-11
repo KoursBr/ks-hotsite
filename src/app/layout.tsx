@@ -6,9 +6,33 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kours",
+  title: "Kours - Plataforma White-label para Cursos Online",
   description:
-    "Descubra a Kours, a plataforma white-label omnichannel que permite a personalização completa para venda de cursos online e produtos digitais. Com Kours, criadores de conteúdo, escolas EAD, e empresas podem gerenciar seus cursos e treinamentos com facilidade. Nossa plataforma oferece ferramentas avançadas de gerenciamento de conteúdo, acompanhamento de desempenho de vendas e uma experiência personalizada para seus alunos ou funcionários. Escolha entre a Área de Membros, nosso robusto LMS (Learning Management System), ou o Treinamento Privado para empresas. Comece agora com o self-onboarding simples ou solicite o onboarding guiado da nossa equipe especializada. Aumente suas vendas de conteúdo digital com uma solução prática, escalável e confiável.",
+    "Plataforma white-label para vender cursos online e produtos digitais. Crie, gerencie e escale com facilidade usando a Kours.",
+  openGraph: {
+    title: "Kours - Plataforma White-label para Cursos Online",
+    description:
+      "A Kours é uma plataforma white-label para criadores de conteúdo, escolas e empresas venderem cursos online e produtos digitais com autonomia, personalização e escalabilidade.",
+    url: "https://kours.com.br",
+    siteName: "Kours",
+    images: [
+      {
+        url: "https://kours.com.br/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Kours - Plataforma para cursos online white-label",
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kours - Plataforma White-label para Cursos Online",
+    description:
+      "A Kours é uma plataforma white-label para criadores de conteúdo, escolas e empresas venderem cursos online e produtos digitais com autonomia, personalização e escalabilidade.",
+    images: ["https://kours.com.br/og-image.webp"],
+  },
 };
 
 export default function RootLayout({
@@ -23,34 +47,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Kours" />
-
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="Kours - Plataforma White-label para Cursos e Produtos Digitais"
-        />
-        <meta
-          property="og:description"
-          content="Venda cursos e produtos digitais com uma plataforma personalizável, robusta e moderna."
-        />
-        <meta
-          property="og:image"
-          content="https://kours.com.br/webp/og-image.webp"
-        />
-        <meta property="og:url" content="https://kours.com.br" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kours - Plataforma White-label" />
-        <meta
-          name="twitter:description"
-          content="Venda cursos e produtos digitais com a Kours."
-        />
-        <meta
-          name="twitter:image"
-          content="https://kours.com.br/webp/og-image.webp"
-        />
 
         {/* Schema.org */}
         <Script
