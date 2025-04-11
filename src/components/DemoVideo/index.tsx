@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import {
   Box,
   Button,
@@ -12,13 +12,13 @@ import {
 } from "@chakra-ui/react";
 import { FaPlay } from "react-icons/fa";
 
-const DemoVideo = () => {
+const DemoVideo = forwardRef((props, forwardRef: any) => {
   const [playVideo, setPlayVideo] = useState(false);
 
   const headingFontSize = useBreakpointValue({ base: "32px", md: "54px" });
 
   return (
-    <Container maxW="4xl" p={4} centerContent>
+    <Container maxW="4xl" p={4} centerContent ref={forwardRef}>
       <Box
         textAlign={{ base: "left", md: "center" }}
         fontWeight={600}
@@ -38,35 +38,42 @@ const DemoVideo = () => {
         <AspectRatio
           ratio={16 / 9}
           bgGradient="linear(to-tr, #0f406f, #181818)"
+          onClick={() => setPlayVideo(true)}
           cursor="pointer"
-          onClick={() => setPlayVideo(!playVideo)}
         >
           {playVideo ? (
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/tzXzEZTU-oA"
-              title="Intro video for Kours"
-              frameBorder="0"
+              src="https://www.youtube.com/embed/tzXzEZTU-oA?rel=0&modestbranding=1&autoplay=1"
+              title="Vídeo de demonstração da Kours"
+              loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              style={{ borderRadius: "16px" }}
             ></iframe>
           ) : (
-            <Center position="absolute" inset={0}>
+            <Center>
               <Button
+                aria-label="Assistir vídeo de demonstração"
                 bg="transparent"
                 _hover={{ bg: "transparent" }}
-                _focus={{ outline: "none" }}
-                onClick={() => setPlayVideo(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPlayVideo(true);
+                }}
+                p={0}
                 w={{ base: 16, lg: 28 }}
                 h={{ base: 16, lg: 28 }}
-                p={0}
               >
                 <Icon
                   as={FaPlay}
-                  w={{ base: 16, lg: 28 }}
-                  h={{ base: 16, lg: 28 }}
+                  w="100%"
+                  h="100%"
                   color="white"
+                  transition="transform 0.3s ease"
+                  _hover={{ transform: "scale(1.1)" }}
+                  title="Play"
                 />
               </Button>
             </Center>
@@ -75,6 +82,6 @@ const DemoVideo = () => {
       </Box>
     </Container>
   );
-};
+});
 
 export default DemoVideo;

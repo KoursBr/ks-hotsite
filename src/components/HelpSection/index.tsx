@@ -1,16 +1,13 @@
 "use client";
 
-import {
-  Box,
-  Heading,
-  Text,
-  Button,
-  Flex,
-  Icon,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Flex, Icon } from "@chakra-ui/react";
 import { MdOutgoingMail } from "react-icons/md";
 
-const HelpSection = () => {
+const HelpSection = ({
+  onTalkToUseClick,
+}: {
+  onTalkToUseClick: () => void;
+}) => {
   return (
     <Box
       as="section"
@@ -46,6 +43,7 @@ const HelpSection = () => {
           color="white"
           size="lg"
           _hover={{ bg: "white", color: "#000" }}
+          onClick={onTalkToUseClick}
         >
           Fale conosco
         </Button>

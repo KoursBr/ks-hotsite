@@ -1,34 +1,51 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+
+import { useSearchParams } from "next/navigation";
 import { Box, ChakraProvider, useDisclosure } from "@chakra-ui/react";
+
 import koursTheme from "../styles/theme";
+
+import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
-import Features from "@/components/Benefits";
-import Platform from "@/components/Platform";
+import Plans from "@/components/Plans";
+import Navbar from "@/components/NavBar";
 import Results from "@/components/Results";
 import Sell from "@/components/Sell/Index";
-import StartFree from "@/components/StartFree";
+import Features from "@/components/Benefits";
+import Platform from "@/components/Platform";
 import Carousel from "@/components/Carousel";
-import Faq from "@/components/Faq";
-import RegisterModal from "@/components/LeadModal";
-import Plans from "@/components/Plans";
-import { useEffect, useRef, useState } from "react";
 import FaqPlans from "@/components/FaqPlans";
+import StartFree from "@/components/StartFree";
+import DemoVideo from "@/components/DemoVideo";
+import RegisterModal from "@/components/LeadModal";
+import ContactUsModal from "@/components/ContactUsModal";
 import HelpSection from "@/components/HelpSection";
-import Navbar from "@/components/NavBar";
-import { useSearchParams } from "next/navigation";
 
 function Home() {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isLeadModalOpen,
+    onClose: onCloseLeadModal,
+    onOpen: onOpenLeadModal,
+  } = useDisclosure();
+  const {
+    isOpen: isContactUsModalOpen,
+    onClose: onCloseContactUsModal,
+    onOpen: onOpenContactUsModal,
+  } = useDisclosure();
+
+  const searchParams = useSearchParams();
+
   const [showPlans, setShowPlans] = useState(false);
   const [heroInputEmail, setHeroInputEmail] = useState("");
+  const [pendingScrollTo, setPendingScrollTo] = useState<string | null>(null);
+
   const featuresRef = useRef<HTMLDivElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const plansRef = useRef<HTMLDivElement>(null);
-  const [pendingScrollTo, setPendingScrollTo] = useState<string | null>(null);
-  const searchParams = useSearchParams();
-
+  const demoRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (item: string) => {
     if (item === "Preços e planos") {
@@ -50,6 +67,13 @@ function Home() {
       });
     }
 
+    if (item === "Apresentação") {
+      demoRef?.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+
     if (item === "Como funciona?") {
       resultsRef?.current?.scrollIntoView({
         behavior: "smooth",
@@ -57,7 +81,7 @@ function Home() {
       });
     }
 
-    if (item === "Feedback" || item === "Perguntas frequentes") {
+    if (item === "Perguntas frequentes") {
       faqRef?.current?.scrollIntoView({
         behavior: "smooth",
         block: "start",
@@ -88,7 +112,7 @@ function Home() {
     const sectionParam = searchParams.get("section");
     if (sectionParam === "plans") {
       setShowPlans(true);
-      setPendingScrollTo("Preços e planos"); // Scroll suave
+      setPendingScrollTo("Preços e planos");
     }
   }, [searchParams]);
 
@@ -100,22 +124,37 @@ function Home() {
 
       <Box display={showPlans ? "none" : "block"}>
         <Hero
-          onOpenLeadModal={onOpen}
+          onOpenLeadModal={onOpenLeadModal}
           setEmail={setHeroInputEmail}
           onItemClick={scrollTo}
         />
-        <Platform onOpenLeadModal={onOpen} />
+
+        <DemoVideo ref={demoRef} />
+
+        <Platform onOpenLeadModal={onOpenLeadModal} />
         <Features ref={featuresRef} />
         <Results ref={resultsRef} />
-        <Sell onOpenLeadModal={onOpen} />
+        {/* <Sell onOpenLeadModal={onOpen} /> */}
         {/* <Carousel /> */}
-        {/* <StartFree /> */}
-        <Faq ref={faqRef} onOpenLeadModal={onOpen} />
+        <StartFree
+          onSeePlanClick={() => {
+            scrollTo("Preços e planos");
+          }}
+        />
+        <Faq ref={faqRef} onTalkToUseClick={onOpenContactUsModal} />
 
-        {isOpen && (
+        {isLeadModalOpen && (
           <RegisterModal
-            showModal={isOpen}
-            onClose={onClose}
+            showModal={isLeadModalOpen}
+            onClose={onCloseLeadModal}
+            prevEmail={heroInputEmail}
+          />
+        )}
+
+        {isContactUsModalOpen && (
+          <ContactUsModal
+            showModal={isContactUsModalOpen}
+            onClose={onCloseContactUsModal}
             prevEmail={heroInputEmail}
           />
         )}
@@ -124,7 +163,7 @@ function Home() {
       {showPlans && (
         <Box ref={plansRef}>
           <Plans />
-          <HelpSection />
+          <HelpSection onTalkToUseClick={onOpenContactUsModal} />
           <FaqPlans />
         </Box>
       )}
