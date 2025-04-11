@@ -15,11 +15,10 @@ import {
 } from "@chakra-ui/react";
 import NextImage from "next/image";
 
-import Navbar from "../NavBar";
 import { MdEmail } from "react-icons/md";
 import { useState } from "react";
 
-const heroImage = "/frame-hero.png";
+const heroImage = "/webp/frame-hero.webp";
 
 export default function Hero({
   setEmail,

@@ -12,8 +12,8 @@ import {
 
 import KoursCircleLogoWhite from "../../../public/KoursCircleWhiteWithBlue.svg";
 
-const manCamera = "/man-camera.svg";
-const handComputer = "/hand-computer.svg";
+const manCamera = "/webp/man-camera.webp";
+const handComputer = "/webp/hand-computer.webp";
 
 const cards = [
   {

@@ -80,7 +80,7 @@ export default function Platform({
       </Box>
       <Box flex={1} h="full">
         <Image
-          src="/woman-using-laptop.svg"
+          src="/webp/woman-using-laptop.webp"
           alt="Woman using a laptop"
           objectFit="cover"
           w="full"

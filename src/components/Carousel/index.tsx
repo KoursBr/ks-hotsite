@@ -34,7 +34,7 @@ export default function Carousel() {
           <SwiperSlide>
             <Flex alignItems="center" justifyContent="center" h="full">
               <Box flex="1">
-                <Image src="\confident-handsome-guy-posing-against-white-wall 2.png" />
+                <Image src="\webp\man-posing.webp" />
               </Box>
               <Box flex="2">
                 <VStack
