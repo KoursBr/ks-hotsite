@@ -20,10 +20,21 @@ import FaqPlans from "@/components/FaqPlans";
 import StartFree from "@/components/StartFree";
 import DemoVideo from "@/components/DemoVideo";
 import RegisterModal from "@/components/LeadModal";
+import ContactUsModal from "@/components/ContactUsModal";
 import HelpSection from "@/components/HelpSection";
 
 function Home() {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+  const {
+    isOpen: isLeadModalOpen,
+    onClose: onCloseLeadModal,
+    onOpen: onOpenLeadModal,
+  } = useDisclosure();
+  const {
+    isOpen: isContactUsModalOpen,
+    onClose: onCloseContactUsModal,
+    onOpen: onOpenContactUsModal,
+  } = useDisclosure();
+
   const searchParams = useSearchParams();
 
   const [showPlans, setShowPlans] = useState(false);
@@ -105,25 +116,37 @@ function Home() {
 
       <Box display={showPlans ? "none" : "block"}>
         <Hero
-          onOpenLeadModal={onOpen}
+          onOpenLeadModal={onOpenLeadModal}
           setEmail={setHeroInputEmail}
           onItemClick={scrollTo}
         />
 
         <DemoVideo />
 
-        <Platform onOpenLeadModal={onOpen} />
+        <Platform onOpenLeadModal={onOpenLeadModal} />
         <Features ref={featuresRef} />
         <Results ref={resultsRef} />
-        <Sell onOpenLeadModal={onOpen} />
+        {/* <Sell onOpenLeadModal={onOpen} /> */}
         {/* <Carousel /> */}
-        {/* <StartFree /> */}
-        <Faq ref={faqRef} onOpenLeadModal={onOpen} />
+        <StartFree
+          onSeePlanClick={() => {
+            scrollTo("Preços e planos");
+          }}
+        />
+        <Faq ref={faqRef} onTalkToUseClick={onOpenContactUsModal} />
 
-        {isOpen && (
+        {isLeadModalOpen && (
           <RegisterModal
-            showModal={isOpen}
-            onClose={onClose}
+            showModal={isLeadModalOpen}
+            onClose={onCloseLeadModal}
+            prevEmail={heroInputEmail}
+          />
+        )}
+
+        {isContactUsModalOpen && (
+          <ContactUsModal
+            showModal={isContactUsModalOpen}
+            onClose={onCloseContactUsModal}
             prevEmail={heroInputEmail}
           />
         )}
@@ -132,7 +155,7 @@ function Home() {
       {showPlans && (
         <Box ref={plansRef}>
           <Plans />
-          <HelpSection />
+          <HelpSection onTalkToUseClick={onOpenContactUsModal} />
           <FaqPlans />
         </Box>
       )}

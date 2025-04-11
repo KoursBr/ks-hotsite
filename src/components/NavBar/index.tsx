@@ -61,7 +61,7 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
             variant={"unstyled"}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>
+            <Box onClick={() => onItemClick("Home")} cursor="pointer">
               <Image
                 src="/svg/kours-white-logo.svg"
                 alt="Logo"

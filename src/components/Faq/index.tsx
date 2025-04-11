@@ -19,10 +19,13 @@ import KoursLogo from "../../../public/svg/kours-white-logo.svg";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdOutgoingMail } from "react-icons/md";
 import { forwardRef } from "react";
+import { useRouter } from "next/navigation";
 
 const FaqSection = forwardRef(
-  ({ onOpenLeadModal }: { onOpenLeadModal: () => void }, forwardRef: any) => {
+  ({ onTalkToUseClick }: { onTalkToUseClick: () => void }, forwardRef: any) => {
     const buttonSize = useBreakpointValue({ base: "sm", md: "md" });
+
+    const router = useRouter();
 
     return (
       <Box
@@ -86,7 +89,7 @@ const FaqSection = forwardRef(
                 zIndex="2"
                 color={"white"}
                 _hover={{ bg: "rgba(1, 126, 244, 0.6)" }}
-                onClick={onOpenLeadModal}
+                onClick={onTalkToUseClick}
               >
                 <MdOutgoingMail
                   style={{ marginRight: "5px" }}
