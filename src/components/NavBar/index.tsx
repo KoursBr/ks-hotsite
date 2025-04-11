@@ -63,7 +63,7 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Image src="/white-logo.svg" alt="Logo" />
+              <Image src="/svg/kours-white-logo.svg" alt="Logo" />
             </Box>
             <HStack
               as={"nav"}

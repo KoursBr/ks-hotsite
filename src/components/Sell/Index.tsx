@@ -10,7 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import KoursCircleLogoWhite from "../../../public/KoursCircleWhiteWithBlue.svg";
+import KoursCircleLogoWhite from "../../../public/svg/kours-circle-blue-logo.svg";
 
 const manCamera = "/webp/man-camera.webp";
 const handComputer = "/webp/hand-computer.webp";
@@ -112,16 +112,6 @@ export default function Sell({
         >
           Teste grátis
         </Button>
-        {/* <Image
-          src="/bars.png"
-          position="absolute"
-          alt="Dark Logo"
-          top="2"
-          left={{ base: "0", md: "150px" }}
-          objectFit="cover"
-          w="290px"
-          h="30px"
-        /> */}
       </Flex>
     </Box>
   );

@@ -35,7 +35,7 @@ export default function Platform({
       >
         {!isMobile && (
           <Image
-            src="/dark-logo.png"
+            src="/png/kours-dark-faded-logo.png"
             position="absolute"
             alt="Dark Logo"
             bottom="-3"

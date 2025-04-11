@@ -15,7 +15,7 @@ const HelpSection = () => {
     <Box
       as="section"
       bg="#017df4"
-      bgImage="url('/bg-start.png')"
+      bgImage="url('/png/bg-start.png')"
       bgSize="cover"
       bgRepeat="no-repeat"
       bgPosition="center"

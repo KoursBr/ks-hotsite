@@ -15,7 +15,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 
-import KoursLogo from "../../../public/white-logo.svg";
+import KoursLogo from "../../../public/svg/kours-white-logo.svg";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdOutgoingMail } from "react-icons/md";
 import { forwardRef } from "react";
@@ -42,7 +42,7 @@ const FaqSection = forwardRef(
             left="0"
             right="0"
             bottom="0"
-            bgImage="url('/faq-background-image.svg')"
+            bgImage="url('/svg/faq-background-image.svg')"
             bgPosition="bottom"
             bgRepeat="repeat-y"
             bgSize="100vw 300px"

@@ -122,7 +122,7 @@ const RegisterModal = React.forwardRef(
           <ModalHeader>
             <Flex alignItems="center" gap={3}>
               <Image
-                src="/Black logo - no background.svg"
+                src="/svg/kours-logo-black.svg"
                 alt="Kours logo icon"
                 w="90px"
               />

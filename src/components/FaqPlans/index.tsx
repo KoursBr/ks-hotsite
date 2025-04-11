@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FaCirclePlus } from "react-icons/fa6";
 
-import KoursLogo from "../../../public/white-logo.svg";
+import KoursLogo from "../../../public/svg/kours-white-logo.svg";
 
 
 const FaqPlans = () => {
@@ -38,7 +38,7 @@ const FaqPlans = () => {
           left="0"
           right="0"
           bottom="0"
-          bgImage="url('/faq-background-image.svg')"
+          bgImage="url('/svg/faq-background-image.svg')"
           bgPosition="bottom"
           bgRepeat="repeat-y"
           bgSize="100vw 300px"

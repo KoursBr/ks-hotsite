@@ -8,7 +8,7 @@ export default function StartFree() {
     <Box
       bg="primary"
       py={8}
-      bgImage="url('/bg-start.png')"
+      bgImage="url('/png/bg-start.png')"
       bgPos="center"
       bgRepeat="no-repeat"
       bgSize="cover"
