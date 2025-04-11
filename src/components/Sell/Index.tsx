@@ -1,19 +1,11 @@
 "use client";
 
-import {
-  Box,
-  Image,
-  Flex,
-  Heading,
-  useBreakpointValue,
-  Text,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Image, Flex, Heading, Text, Button } from "@chakra-ui/react";
 
-import KoursCircleLogoWhite from "../../../public/KoursCircleWhiteWithBlue.svg";
+import KoursCircleLogoWhite from "../../../public/svg/kours-circle-blue-logo.svg";
 
-const manCamera = "/man-camera.svg";
-const handComputer = "/hand-computer.svg";
+const manCamera = "/webp/man-camera.webp";
+const handComputer = "/webp/hand-computer.webp";
 
 const cards = [
   {
@@ -44,7 +36,7 @@ export default function Sell({
         w={{ base: 100, md: 140 }}
         h={{ base: 100, md: 140 }}
       >
-        <Image src={KoursCircleLogoWhite.src} alt="Man with camera" />
+        <Image src={KoursCircleLogoWhite.src} alt="Kours white logo with blue circle" />
       </Box>
       <Box
         textAlign={{ base: "left", md: "center" }}
@@ -75,7 +67,13 @@ export default function Sell({
                 overflow="hidden"
                 maxW={{ base: "80vw", sm: "45vw", md: "30vw", lg: "30vw" }}
               >
-                <Image src={card.image} alt="Man with camera" />
+                <Image
+                  src={card.image}
+                  alt="Man with camera image"
+                  width={"100%"}
+                  height={"100%"}
+                  loading="lazy"
+                />
                 <Box p="1rem">
                   <Box
                     mt="1"
@@ -112,16 +110,6 @@ export default function Sell({
         >
           Teste grátis
         </Button>
-        {/* <Image
-          src="/bars.png"
-          position="absolute"
-          alt="Dark Logo"
-          top="2"
-          left={{ base: "0", md: "150px" }}
-          objectFit="cover"
-          w="290px"
-          h="30px"
-        /> */}
       </Flex>
     </Box>
   );

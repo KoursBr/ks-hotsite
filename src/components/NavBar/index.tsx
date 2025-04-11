@@ -22,12 +22,12 @@ const Links = [
   "Porque a Kours?",
   "Como funciona?",
   "Feedback",
+  "Preços e planos",
   "Perguntas frequentes",
 ];
 
 const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
@@ -62,7 +62,13 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              <Image src="/white-logo.svg" alt="Logo" />
+              <Image
+                src="/svg/kours-white-logo.svg"
+                alt="Logo"
+                w={"100%"}
+                h={"100%"}
+                loading="lazy"
+              />
             </Box>
             <HStack
               as={"nav"}
@@ -107,7 +113,9 @@ const Navbar = ({ onItemClick }: { onItemClick: (item: string) => void }) => {
               _hover={{ bg: "gray.500" }}
               bg="transparent"
               px={4}
-              onClick={() => window.open("https://admin.kours.com.br", "_blank")}
+              onClick={() =>
+                window.open("https://admin.kours.com.br", "_blank")
+              }
             >
               Login
             </Button>

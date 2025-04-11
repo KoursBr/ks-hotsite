@@ -15,11 +15,11 @@ import {
 } from "@chakra-ui/react";
 import NextImage from "next/image";
 
-import Navbar from "../NavBar";
 import { MdEmail } from "react-icons/md";
 import { useState } from "react";
 
-const heroImage = "/frame-hero.png";
+const heroImage = "/webp/frame-hero.webp";
+const heroImageBlur = "/webp/frame-hero-blur.webp";
 
 export default function Hero({
   setEmail,
@@ -38,7 +38,10 @@ export default function Hero({
     <main>
       <Box
         height="100%"
-        bg="radial-gradient(circle at bottom, #123352, #123352 10%, #0f406f 40%, #181818 60%, #181818)"
+        bg={{
+          base: "#181818",
+          md: "radial-gradient(circle at bottom, #123352, #123352 10%, #0f406f 40%, #181818 60%, #181818)",
+        }}
         position="relative"
         _before={{
           base: {},
@@ -57,7 +60,6 @@ export default function Hero({
         }}
       >
         <Flex direction="column" h="100%" position="relative" zIndex={2}>
-          <Navbar onItemClick={onItemClick} />
           <Container maxW="7xl" p={4}>
             <Stack
               direction="column"
@@ -130,10 +132,13 @@ export default function Hero({
             <Box overflow="hidden" lineHeight="0" px={1}>
               <NextImage
                 src={heroImage}
-                alt="Descrição da imagem"
+                alt="Demonstração da plataforma Kours em uso"
                 width={1000}
                 height={768}
-                objectFit="cover"
+                priority
+                placeholder="blur"
+                blurDataURL={heroImageBlur}
+                style={{ objectFit: "cover" }}
               />
             </Box>
           </Flex>

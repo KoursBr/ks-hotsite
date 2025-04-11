@@ -15,9 +15,9 @@ import { MdOutlineTextFields } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { forwardRef } from "react";
 
-const resultsFirst = "/results-first.svg";
-const resultsSecond = "/results-second.svg";
-const resultsThird = "/results-third.svg";
+const resultsFirst = "/webp/results-first.webp";
+const resultsSecond = "/webp/results-second.webp";
+const resultsThird = "/webp/results-third.webp";
 
 const results = [
   {
@@ -110,16 +110,29 @@ const Results = forwardRef((props, forwardRef: any) => {
                   {result.text}
                 </Text>
               </Stack>
-              <Box ml={{ base: 0, md: 5 }} zIndex="1">
-                <Image
-                  w="100%"
-                  h="100%"
-                  minW={{ base: "auto", md: "30rem" }}
-                  objectFit="cover"
-                  src={result.image}
-                  rounded="md"
-                  fallback={<Skeleton />}
-                />
+              <Box
+                zIndex="1"
+                rounded={"lg"}
+                pl={8}
+                pt={8}
+                style={{
+                  backdropFilter: "blur(10px)",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                }}
+              >
+                <Box ml={{ base: 0, md: 5 }} maxW={"690px"}>
+                  <Image
+                    w="100%"
+                    h="100%"
+                    minW={{ base: "auto", md: "30rem" }}
+                    objectFit="cover"
+                    src={result.image}
+                    alt="Kours platform screenshots with redacted data"
+                    rounded="md"
+                    fallback={<Skeleton />}
+                    loading="lazy"
+                  />
+                </Box>
               </Box>
             </Stack>
           );

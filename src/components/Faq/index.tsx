@@ -15,7 +15,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/react";
 
-import KoursLogo from "../../../public/white-logo.svg";
+import KoursLogo from "../../../public/svg/kours-white-logo.svg";
 import { FaCirclePlus } from "react-icons/fa6";
 import { MdOutgoingMail } from "react-icons/md";
 import { forwardRef } from "react";
@@ -42,7 +42,7 @@ const FaqSection = forwardRef(
             left="0"
             right="0"
             bottom="0"
-            bgImage="url('/faq-background-image.svg')"
+            bgImage="url('/svg/faq-background-image.svg')"
             bgPosition="bottom"
             bgRepeat="repeat-y"
             bgSize="100vw 300px"
@@ -68,7 +68,6 @@ const FaqSection = forwardRef(
             zIndex="2"
             position="relative"
           >
-            {/* Left Section - FAQ Heading and Button */}
             <Box maxW={{ base: "100%", md: "40%" }} zIndex="2">
               <Text mb={2} color={"#62B0F9"} fontWeight={600}>
                 Perguntas frequentes
@@ -97,7 +96,6 @@ const FaqSection = forwardRef(
               </Button>
             </Box>
 
-            {/* Right Section - FAQ Accordion */}
             <Box
               maxW={{ base: "100%", md: "45%" }}
               mt={{ base: 8, md: 0 }}
@@ -135,7 +133,8 @@ const FaqSection = forwardRef(
 
           {/* Footer */}
           <Flex
-            mx={{ base: 0, md: 12 }}
+            mt={12}
+            mx={{ base: 0, md: 24 }}
             align={"center"}
             justify={"space-between"}
             flexDir={{ base: "column-reverse", md: "row" }}
@@ -146,6 +145,7 @@ const FaqSection = forwardRef(
                 alt="Kours Logo"
                 width={100}
                 height={100}
+                loading="lazy"
               />
             </Box>
 
