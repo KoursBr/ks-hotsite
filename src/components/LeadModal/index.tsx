@@ -125,6 +125,8 @@ const RegisterModal = React.forwardRef(
                 src="/svg/kours-logo-black.svg"
                 alt="Kours logo icon"
                 w="90px"
+                h="100%"
+                loading="lazy"
               />
             </Flex>
           </ModalHeader>

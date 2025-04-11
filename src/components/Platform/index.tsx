@@ -37,12 +37,13 @@ export default function Platform({
           <Image
             src="/png/kours-dark-faded-logo.png"
             position="absolute"
-            alt="Dark Logo"
+            alt="Kours Dark Faded Logo"
             bottom="-3"
             right="0"
             objectFit="cover"
             w="250px"
             h="250px"
+            loading="lazy"
           />
         )}
         <Flex
@@ -83,8 +84,9 @@ export default function Platform({
           src="/webp/woman-using-laptop.webp"
           alt="Woman using a laptop"
           objectFit="cover"
-          w="full"
+          w="100%"
           h={{ base: "auto", md: "500px" }}
+          loading="lazy"
         />
       </Box>
     </Flex>

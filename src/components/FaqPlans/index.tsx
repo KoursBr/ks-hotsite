@@ -101,6 +101,7 @@ const FaqPlans = () => {
             alt="Kours Logo"
             width={100}
             height={100}
+            loading="lazy"
           />
         </Box>
 

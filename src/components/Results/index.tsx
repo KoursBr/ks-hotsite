@@ -110,16 +110,27 @@ const Results = forwardRef((props, forwardRef: any) => {
                   {result.text}
                 </Text>
               </Stack>
-              <Box zIndex="1" rounded={'lg'} pl={8} pt={8} style={{ backdropFilter: 'blur(10px)', backgroundColor: 'rgba(255, 255, 255, 0.05)' }}>
-                <Box ml={{ base: 0, md: 5 }} maxW={"690px"}> 
+              <Box
+                zIndex="1"
+                rounded={"lg"}
+                pl={8}
+                pt={8}
+                style={{
+                  backdropFilter: "blur(10px)",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                }}
+              >
+                <Box ml={{ base: 0, md: 5 }} maxW={"690px"}>
                   <Image
                     w="100%"
                     h="100%"
                     minW={{ base: "auto", md: "30rem" }}
                     objectFit="cover"
                     src={result.image}
+                    alt="Kours platform screenshots with redacted data"
                     rounded="md"
                     fallback={<Skeleton />}
+                    loading="lazy"
                   />
                 </Box>
               </Box>

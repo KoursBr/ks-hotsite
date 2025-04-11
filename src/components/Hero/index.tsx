@@ -132,6 +132,7 @@ export default function Hero({
                 width={1000}
                 height={768}
                 objectFit="cover"
+                loading="eager"
               />
             </Box>
           </Flex>
