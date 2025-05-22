@@ -23,6 +23,8 @@ import {
   Input,
 } from "@chakra-ui/react";
 
+import { sendGAEvent } from "@next/third-parties/google";
+
 interface RegisterModalProps {
   showModal: boolean;
   onClose: () => void;
@@ -43,12 +45,14 @@ const RegisterModal = React.forwardRef(
     const validate = () => {
       const newErrors: typeof errors = {};
       if (!name.trim()) newErrors.name = "Nome é obrigatório.";
+
       if (!email.trim()) {
         newErrors.email = "Email é obrigatório.";
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         newErrors.email = "Email inválido.";
       }
       setErrors(newErrors);
+
       return Object.keys(newErrors).length === 0;
     };
 
@@ -58,6 +62,12 @@ const RegisterModal = React.forwardRef(
       const dto = { name, email };
 
       setIsSubmitting(true);
+
+      sendGAEvent("event", "conversion", {
+        send_to: "AW-16764643531/08cvCNytq-UZEMvRgLo-",
+        email,
+        name,
+      });
 
       try {
         const response = await fetch(
