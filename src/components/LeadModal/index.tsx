@@ -23,7 +23,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-import { sendGAEvent } from "@next/third-parties/google";
+// import { sendGAEvent } from "@next/third-parties/google";
 
 interface RegisterModalProps {
   showModal: boolean;
@@ -63,11 +63,11 @@ const RegisterModal = React.forwardRef(
 
       setIsSubmitting(true);
 
-      sendGAEvent("event", "conversion", {
-        send_to: "AW-16764643531/08cvCNytq-UZEMvRgLo-",
-        email,
-        name,
-      });
+      // sendGAEvent("event", "conversion", {
+      //   send_to: "AW-16764643531/08cvCNytq-UZEMvRgLo-",
+      //   email,
+      //   name,
+      // });
 
       try {
         const response = await fetch(
